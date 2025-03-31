@@ -34,28 +34,42 @@ public class PhoneBook {
         phonebook.remove(name);
     }
 
-    public Boolean hasEntry(String name) {
+    public Boolean hasEntry(String name, String phoneNumber) {
+        Boolean flag = phonebook.containsKey(name);
+        if(flag ==true) {
+            return true;
+        }
+        return false;
+        }
 
-        return null;
-    }
 
     public List<String> lookup(String name) {
 
-        return null;
+        return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
 
-        return null;
+        Set<String> keys = phonebook.keySet();
+        String result = "";
+        for (String key : keys) {
+            if (phonebook.get(key).contains(phoneNumber)) {
+                result = key;
+            }
+        }
+        return result;
     }
 
     public List<String> getAllContactNames() {
+        Set<String> keys = getMap().keySet();
+        List<String> result = new ArrayList<>(keys);
+        System.out.println(result);
 
-        return null;
+        return result;
     }
 
     public Map<String, List<String>> getMap() {
 
-        return null;
+        return phonebook;
     }
 }
